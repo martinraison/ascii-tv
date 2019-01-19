@@ -7,7 +7,7 @@ Stream ASCII movies over HTTP
 Start watching Star Wars Episode IV from a shell like this:
 
 ```
-curl asciitv.fr
+curl https://asciitv.fr
 ```
 
 ## Credits
