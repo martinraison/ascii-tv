@@ -10,6 +10,8 @@ Start watching Star Wars Episode IV from a shell like this:
 curl https://asciitv.fr
 ```
 
+<img src="./demo.svg">
+
 ## Credits
 
 * Original art work : Simon Jansen ([http://www.asciimation.co.nz/](http://www.asciimation.co.nz/))
