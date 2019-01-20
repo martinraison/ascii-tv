@@ -40,6 +40,10 @@ func main() {
 	fmt.Printf("Extracted %d frames from %s\n", len(frames), *moviePtr)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if !strings.Contains(strings.ToLower(r.Header.Get("User-Agent")), "curl") {
+			fmt.Fprintf(w, "Web browsers are so %d, use \"curl https://asciitv.fr\" from your terminal instead!\n", time.Now().Year()-1)
+			return
+		}
 		for _, frame := range frames {
 			// Clear terminal and move cursor to position (1,1)
 			fmt.Fprint(w, "\033[2J\033[1;1H")
