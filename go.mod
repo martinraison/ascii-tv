@@ -1,3 +1,3 @@
-module github.com/martinraison/http-theater
+module github.com/martinraison/ascii-tv
 
 go 1.11

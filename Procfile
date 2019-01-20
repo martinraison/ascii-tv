@@ -1,1 +1,1 @@
-web: http-theater -addr :$PORT
+web: ascii-tv -addr :$PORT

@@ -1,4 +1,4 @@
-# HTTP Theater
+# ASCII TV
 
 Stream ASCII movies over HTTP
 
