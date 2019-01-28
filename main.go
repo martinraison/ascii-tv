@@ -59,6 +59,11 @@ func main() {
 			for _, line := range frame.lines {
 				fmt.Fprintln(w, line)
 			}
+
+			if speed != 1 {
+				fmt.Fprintln(w, "\n\nSpeed:", speed)
+			}
+
 			if f, ok := w.(http.Flusher); ok {
 				f.Flush()
 			}
