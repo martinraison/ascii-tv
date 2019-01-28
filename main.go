@@ -16,6 +16,8 @@ type frame struct {
 	duration time.Duration
 }
 
+var speed = 1 // Default speed of the movie
+
 func main() {
 	moviePtr := flag.String("movie", "resources/sw1.txt", "path to ASCII movie file")
 	addrPtr := flag.String("addr", ":8080", "TCP address to listen on")
@@ -44,16 +46,28 @@ func main() {
 			fmt.Fprintf(w, "Web browsers are so %d, use \"curl https://asciitv.fr\" from your terminal instead!\n", time.Now().Year()-1)
 			return
 		}
+
+		if value, ok := r.URL.Query()["speed"]; ok {
+			if speedInt, err := strconv.Atoi(value[0]); err == nil {
+				speed = speedInt
+			}
+		}
+
 		for _, frame := range frames {
 			// Clear terminal and move cursor to position (1,1)
 			fmt.Fprint(w, "\033[2J\033[1;1H")
 			for _, line := range frame.lines {
 				fmt.Fprintln(w, line)
 			}
+
+			if speed != 1 {
+				fmt.Fprintln(w, "\n\nSpeed:", speed)
+			}
+
 			if f, ok := w.(http.Flusher); ok {
 				f.Flush()
 			}
-			time.Sleep(frame.duration * time.Second / 15)
+			time.Sleep((frame.duration / time.Duration(speed)) * time.Second / 15)
 		}
 	})
 
