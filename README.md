@@ -10,6 +10,9 @@ Start watching Star Wars Episode IV from a shell like this:
 curl https://asciitv.fr
 ```
 
+Parameters
+- `speed` - Any integer (default: 1)
+
 <img src="./demo.svg">
 
 ## Credits
